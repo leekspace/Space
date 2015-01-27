@@ -4,9 +4,9 @@
 #
 ##Parameters: < start |  stop >
 #
-##Requirements: redhat6.3  openvswitch-2.1.3   for SCE Node
+##Requirements: redhat6.3  openvswitch-2.1.3    
 #
-##weili116627@sohu-inc.com 
+##leekspace@gmail.com 
 
 
 source   /etc/profile

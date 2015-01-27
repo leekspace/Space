@@ -1,0 +1,50 @@
+#!/bin/sh
+export LC_ALL=zh_CN.gbk
+. /etc/init.d/functions
+### VAR
+DIR="/opt/staticResourceUpdate"
+RES=${DIR}"/front/"
+DES1="rsync://10.10.77.xxx/saa_front"
+DES2="rsync://10.10.77.xxx/saa_front"
+DES3="rsync://10.10.77.xx/saa_front"
+DES4="rsync://10.10.77.xx/saa_front"
+#DES1="rsync://192.168.106.xxx/saa_front"
+LOG="${DIR}/rsync.log"
+username="xxx"
+password="xxxx"
+flag=0
+TEXTDOMAIN=""
+date '+%Y/%m/%d:%R' >>$LOG
+### FUN
+function rsyncFile(){
+    rsync -auvzrLC  --exclude=dealer/ -q --timeout=15 $1 $2 >> $LOG 2>&1
+    if [ "$?" -eq "0" ]
+    then
+        echo "rsync "$2"  ok!"
+
+    else
+        echo "rsync "$2"  error! please try again."
+        flag=1
+    fi
+}
+
+### DO
+[ ! -d $RES ] && mkdir $RES
+svn co    --username=$username  --password=$password    https://10.10.82.199/svn/saa/front $RES
+if [ "$?" -eq "0" ]
+ then
+    echo "svn update ok!"
+    # delete dealer
+    #cd $RES  && \rm -r ${RES}/dealer
+    for i in 1 2 3 4 5
+    do 
+        tmp="DES"$i
+        [ ! -z ${!tmp} ] &&  rsyncFile $RES ${!tmp}
+    done
+ else
+    echo "svn update error! please try again."
+    flag=1
+fi
+### RESULT
+[ "$flag" -eq "1"  ] && failure;echo
+[ "$flag" -eq "0"  ] && success;echo
