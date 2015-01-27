@@ -2,7 +2,7 @@
 #
 #	Function : ovs-vsctl clear Qos then create Qos (1m 10m) 
 #	Parameters: [otherLimitFile]
-#	weili116627@sohu-inc.com
+#	leekspace@gmail.com
 #
 
 
