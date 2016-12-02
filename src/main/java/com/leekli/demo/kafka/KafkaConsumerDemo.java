@@ -23,7 +23,7 @@ public class KafkaConsumerDemo   implements ApplicationListener<ApplicationReady
 	 * Automatic Offset Committing
 	 * 简单的自动Offset提交
 	 * 也就是说会自动确认消息
-	 */
+	 
 	private void c1(){
 		 System.out.println(" run c1");
 		 Properties props = new Properties();
@@ -42,11 +42,11 @@ public class KafkaConsumerDemo   implements ApplicationListener<ApplicationReady
 	             System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
 	     }
 	}
-
+*/
 	/**
 	 * Manual Offset Control
 	 * 手动控制 ，手动确认消息
-	 */
+	 
 	private void  manualOffsetControl(){
 		 Properties props = new Properties();
 	     props.put("bootstrap.servers", "10.100.100.241:9092");
@@ -71,6 +71,7 @@ public class KafkaConsumerDemo   implements ApplicationListener<ApplicationReady
 	         }
 	     }
 	}
+	*/
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		System.out.println("onApplicationEvent  " + event);

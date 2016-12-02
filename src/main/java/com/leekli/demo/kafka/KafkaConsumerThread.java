@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 
@@ -22,7 +21,7 @@ public class KafkaConsumerThread   implements ApplicationListener<ApplicationRea
 	}
 	
 	private final AtomicBoolean closed = new AtomicBoolean(false);
-    private  KafkaConsumer<String, String> consumer;
+    //private  KafkaConsumer<String, String> consumer;
 
     
 	/**
@@ -31,6 +30,7 @@ public class KafkaConsumerThread   implements ApplicationListener<ApplicationRea
 	 * 自动确认消息
 	 */
 	private void automaticOffsetCommitting(){
+		/*
 		 System.out.println(" run automaticOffsetCommitting");
 		 Properties props = new Properties();
 	     props.put("bootstrap.servers", "10.100.100.241:9092");
@@ -39,7 +39,7 @@ public class KafkaConsumerThread   implements ApplicationListener<ApplicationRea
 	     props.put("auto.commit.interval.ms", "1000");
 	     props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 	     props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-	     consumer = new KafkaConsumer<>(props);
+	     consumer = new KafkaConsumer<String, String>(props);
 	     try {
 			consumer.subscribe(Arrays.asList("test", "lxw1234"));//订阅的topic列表
 			 while (!closed.get()) {
@@ -54,6 +54,7 @@ public class KafkaConsumerThread   implements ApplicationListener<ApplicationRea
 		}finally {
             consumer.close();
         }
+        */
 	}
 
 	
@@ -80,8 +81,10 @@ public class KafkaConsumerThread   implements ApplicationListener<ApplicationRea
 	public void run() {
 		automaticOffsetCommitting();
 	}
+	/*
 	 public void shutdown() {
          closed.set(true);
          consumer.wakeup();//唤醒它，让他退出
      }
+     */
 }
