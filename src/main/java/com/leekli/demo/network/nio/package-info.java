@@ -1,9 +1,4 @@
 /**
- * 
- */
-/**
- * @author liwei
- * @Date   2016年12月1日 下午3:39:11 
- * @Desc 
+ * 使用java 原生的NIO 建立服务
  */
 package com.leekli.demo.network.nio;

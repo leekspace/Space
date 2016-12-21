@@ -1,6 +1,7 @@
 package com.leekli.demo.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.management.ManagementFactory;
 
 public class ByteTest {
 
@@ -11,7 +12,14 @@ public class ByteTest {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
+		String str = ManagementFactory.getRuntimeMXBean().getName();
+		System.out.println(str);
+		try {
+			Thread.sleep(1000000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }
