@@ -1,27 +1,38 @@
 package com.leekli.demo.utils;
 
-public class Test11 {
+import java.util.concurrent.locks.ReentrantLock;
 
-	//最大的块大小
-	private static final int MAX_CHUNK_SIZE = (int) (((long) Integer.MAX_VALUE + 1) / 2);
+public class Test11 {
+	public static  int num; 
+	private ReentrantLock lock = new ReentrantLock();
+	public synchronized void count() { 
+ 
+        System.out.println(Thread.currentThread().getName()+" bef:"+num);
+        num++;
+        System.out.println(Thread.currentThread().getName()+" atf:"+num);
+        count2();
+ 
+    }  
+	public synchronized void count2() {  
+ 
+        System.out.println(Thread.currentThread().getName()+" bef:"+num);
+        num++;
+        System.out.println(Thread.currentThread().getName()+" atf:"+num);
+        System.out.println("getHoldCount:"+lock.getHoldCount());
+ 
+    }  
+	
 	
 	public static void main(String[] args) {
-		int pageSize = 4096 * 2;
-		System.out.println(pageSize & pageSize - 1);
-		
-		
-		
-		int chunkSize = pageSize;
-        int maxOrder = 11;
-		for (int i = maxOrder ; i > 0; i --) {
-            if (chunkSize > MAX_CHUNK_SIZE / 2) {
-                throw new IllegalArgumentException(String.format(
-                        "pageSize (%d) << maxOrder (%d) must not exceed %d", pageSize, maxOrder, MAX_CHUNK_SIZE));
-            }
-            chunkSize <<= 1;
-        }
-		System.out.println("MAX_CHUNK_SIZE:"+MAX_CHUNK_SIZE);
-		System.out.println(chunkSize);
-	}
+	     Runnable runnable = new Runnable() {  
+	    	 Test11 count = new Test11();  
+	            public void run() {  
+	                count.count();  
+	            }  
+	        };  
+	        for(int i = 0; i < 10; i++) {  
+	            new Thread(runnable).start();  
+	        }  
+	    }  
 }
 

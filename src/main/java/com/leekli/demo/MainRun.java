@@ -14,6 +14,7 @@ import com.leekli.demo.controller.EventHandleController;
 import com.leekli.demo.controller.KafkaTestController;
 import com.leekli.demo.kafka.KafkaConfig;
 import com.leekli.demo.redis.Redis;
+import com.leekli.demo.redis.demo.StringTemplateTest;
 
 
 @Configuration
@@ -24,13 +25,15 @@ public class MainRun {
 											 KafkaConfig.class,
 											 DemoController.class, 
 											 EventHandleController.class ,
-											 KafkaTestController.class
-											 //ApplicationEventTest.class,
-											 //SpringApplicationEventTest.class,
+											 KafkaTestController.class,
+											 StringTemplateTest.class,
 											 
-											 //ApplicationContextEventTest.class,
-											 //ApplicationReadyEventTest.class,
-											 //ApplicationStartedEventTest.class,
+											 ApplicationEventTest.class,
+											 SpringApplicationEventTest.class,
+											 
+											 ApplicationContextEventTest.class,
+											 ApplicationReadyEventTest.class,
+											 ApplicationStartedEventTest.class,
 											 
 											 
 											 

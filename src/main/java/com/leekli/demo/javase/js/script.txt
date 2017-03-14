@@ -1,0 +1,17 @@
+importPackage(java.util);
+
+function showHello(){
+    print('全局变量global_1：'+global_1+'\n')
+    return('\n hello! \n');
+}
+
+function getArrays(){
+    print('全局变量global_1：'+global_1+'\n')
+    var list = Arrays.asList(['A', 'B', 'C']);
+    return list;
+}
+
+function getToken(token,num){
+    print('全局变量global_1：'+global_1+'\n')
+    return ('token:'+token + ' num:'+num);
+}

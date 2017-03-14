@@ -1,4 +1,4 @@
-package com.leekli.demo.network.netty;
+package com.leekli.demo.network.netty.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -21,7 +21,8 @@ public class TimeServer {
 		b.group(boosGroup,workerGroup)
 			.channel(NioServerSocketChannel.class)
 			.option(ChannelOption.SO_BACKLOG	,1024)
-			.childHandler(new ChildChannelHandler());
+			.childHandler(new ChildChannelHandler())
+			.childHandler(new ChildChannelHandler(111));
 		
 		//绑定端口，同步等待成功
 		ChannelFuture f= b.bind(port).sync();
