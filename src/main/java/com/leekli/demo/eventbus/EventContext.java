@@ -1,18 +1,15 @@
 package com.leekli.demo.eventbus;
 
 public class EventContext {
-    private String token;
+	private Context context;
 
-    public EventContext(String token){
-        this.token = token;
-    }
-    public String getToken() {
-        return token;
-    }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
+	public Context getContext() {
+		return context;
+	}
+	public void setContext(Context context) {
+		this.context = context;
+	}
     
  
 

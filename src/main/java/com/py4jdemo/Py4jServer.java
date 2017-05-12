@@ -2,6 +2,7 @@ package com.py4jdemo;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,8 +45,9 @@ public class Py4jServer  implements ApplicationListener<ApplicationContextEvent>
 //        GatewayServer server = new GatewayServer(endpoint,port);
         server.start();                   
     }
-
-   
+   public static void main(String[] args) {
+ 
+}
 
 }
 

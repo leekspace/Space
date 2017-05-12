@@ -22,7 +22,7 @@ public class DerbyDemo {
        System.setProperty("derby.system.home", "D:\\test\\");
         try {
             Class.forName(driver).newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

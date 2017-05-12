@@ -6,7 +6,8 @@ public class EventBusTest {
 	public static void testEventBus() {
 		EventBus eventBus = new EventBus();
 		Event et = new Event();
-		EventContext ec = new EventContext("TOKEN:XXXX");
+		EventContext ec = new EventContext();
+		ec.setContext(new Context());
 		eventBus.register(et);// 注册事件
 		eventBus.post(ec);// 触发EventContext事件
 		eventBus.post("字符串事件");//触发字符串事件
