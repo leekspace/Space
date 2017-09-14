@@ -13,6 +13,7 @@
 		<guava.version>19.0</guava.version>
 		<metric.version>3.1.2</metric.version>
 		<kafka.version>0.8.2.2</kafka.version>
+		<jdk.version>1.8</jdk.version>
 	</properties>
 
 	<!-- 从 Spring Boot继承默认值 -->
@@ -28,6 +29,32 @@
 
 	<!-- 为Web应用程序添加典型的依赖关系 -->
 	<dependencies>
+ 
+
+		<dependency>
+			<groupId>org.bytedeco.javacpp-presets</groupId>
+			<artifactId>opencv</artifactId>
+			<version>3.0.0-1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.twelvemonkeys.imageio</groupId>
+			<artifactId>twelvemonkeys-imageio-jmagick</artifactId>
+			<version>2.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
@@ -68,6 +95,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.7-SNAPSHOT</version>
@@ -106,7 +138,7 @@
 		<dependency>
 			<groupId>io.dropwizard.metrics</groupId>
 			<artifactId>metrics-core</artifactId>
-			<version>${metric.version}</version>
+			<version>${metric.version}</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 
 
@@ -155,6 +187,12 @@
 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.11.97</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-dynamodb</artifactId>
 			<version>1.11.27</version>
 		</dependency>
@@ -176,17 +214,24 @@
 			<artifactId>jython-standalone</artifactId>
 			<version>2.5.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
 	</dependencies>
 
 
 	<build>
 		<!--用于启动jar -->
 		<plugins>
+		<!-- 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
+        -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
